@@ -1,22 +1,14 @@
-import logo from './logo.svg';
+import bgImage from './assets/bg.jpg';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className="relative h-screen text-center bg-cover bg-center" style={{ backgroundImage: "url('./assets/bg.jpg')" }}>
+      {/* Blurred Background Overlay */}
+      <div className="absolute inset-0 backdrop-blur-sm"></div>
+
+      <header className="relative flex flex-col items-center justify-center h-screen text-white text-lg">
+        
       </header>
     </div>
   );
