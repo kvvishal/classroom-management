@@ -1,15 +1,32 @@
-import bgImage from './assets/bg.jpg';
-import './App.css';
+import React, { useState } from "react";
+import Login from "./pages/login"; // Ensure the correct path
+import "./App.css";
 
 function App() {
-  return (
-    <div className="relative h-screen text-center bg-cover bg-center" style={{ backgroundImage: "url('./assets/bg.jpg')" }}>
-      {/* Blurred Background Overlay */}
-      <div className="absolute inset-0 backdrop-blur-sm"></div>
+  const [showLogin, setShowLogin] = useState(false); // Track login visibility
 
-      <header className="relative flex flex-col items-center justify-center h-screen text-white text-lg">
-        
-      </header>
+  return (
+    <div className="App">
+      {/* Background Container */}
+      <div className="Img">
+        <div className="blur-overlay"></div>
+      </div>
+
+      {/* Show Login Page on Button Click */}
+      {showLogin ? (
+        <Login />
+      ) : (
+        <div className="white-box">
+          <h2>Welcome</h2>
+          <p>Please login or sign up to continue.</p>
+          <div className="button-container">
+            <button className="btn login" onClick={() => setShowLogin(true)}>
+              Login
+            </button>
+            <button className="btn signup">Sign Up</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
