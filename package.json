@@ -5,6 +5,7 @@
   "dependencies": {
     "classroom-management": "file:",
     "cra-template": "1.2.0",
+    "lucide-react": "^0.475.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-scripts": "5.0.1",

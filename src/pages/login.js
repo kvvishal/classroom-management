@@ -1,46 +1,56 @@
-import React from "react";
+"use client"
 
-const Login = () => {
+import { useState } from "react"
+import "./Login.css"
+import { X } from "lucide-react"
+
+const Login = ({ onClose }) => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [rememberMe, setRememberMe] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // Handle login logic here
+  }
+
   return (
-    <div
-      className="relative flex justify-center items-center h-screen bg-cover bg-center"
-      style={{ backgroundImage: "url('./assets/login.png')" }} // Ensure this image exists in `public/`
-    >
-      {/* Gradient Blur Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-yellow-200 via-red-200 to-pink-200 opacity-80 backdrop-blur-lg"></div>
+    <div className="login-container">
+      <button className="close-button" onClick={onClose}>
+        <X size={24} />
+      </button>
 
-      {/* Login Box */}
-      <div className="relative bg-white/90 p-8 rounded-lg shadow-lg w-96">
-        <h2 className="text-2xl font-bold text-center">Log In</h2>
-        <p className="text-sm text-center mb-4">Login to your account</p>
+      <h1 className="login-title">Log In</h1>
+      <p className="login-subtitle">Login to your Account</p>
 
-        {/* Input Fields */}
-        <div className="space-y-4">
-          <input
-            type="email"
-            placeholder="Email-Id"
-            className="w-full p-2 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="w-full p-2 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
+      <form onSubmit={handleSubmit} className="login-form">
+        <input
+          type="email"
+          placeholder="Email-Id"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="login-input"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="login-input"
+        />
 
-          {/* Remember Me Checkbox */}
-          <div className="flex items-center">
-            <input type="checkbox" id="rememberMe" className="mr-2" />
-            <label htmlFor="rememberMe" className="text-sm">Remember Me</label>
-          </div>
+        <div className="remember-me">
+          <input type="checkbox" id="remember" checked={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />
+          <label htmlFor="remember">Remember Me</label>
         </div>
 
-        {/* Log In Button */}
-        <button className="w-full bg-blue-500 text-white py-2 mt-4 rounded-md hover:bg-blue-600">
+        <button type="submit" className="login-button">
           Log In
         </button>
-      </div>
+      </form>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
+
